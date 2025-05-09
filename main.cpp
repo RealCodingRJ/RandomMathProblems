@@ -1,7 +1,7 @@
+#include <fstream>
 #include <iostream>
 
 #include "NumbersIndex.cpp";
-#include "Calculations.h"
 #include "Functions.h"
 #include "Operators.h"
 
@@ -19,22 +19,34 @@ int main() {
     std::string op = operators();
 
     if (op == "+") {
-        std::cout << "What is: " << num1  << " " << " + " << num2 << std::endl;
+        std::cout << "What is: " << num1  << " + " << num2 << std::endl;
         cin >> answer;
 
         if (answer == Add(num1, num2)) {
 
             cout <<  "Correct" << endl;
         }
+        else {
+            fstream file;
+            file << "Answer is: " << num1 << " + " << num2 << " = " << Add(num1, num2);
+            file.close();
+        }
+
     }
 
     if (op == "-") {
-        std::cout << "What is: " << num1  << " " << " - " << num2 << std::endl;
+        std::cout << "What is: " << num1  << " - " << num2 << std::endl;
         cin >> answer;
 
         if (answer == Sub(num1, num2)) {
 
             cout <<  "Correct" << endl;
+        }
+
+        else {
+            fstream file;
+            file << "Answer is: " << num1 << "- " << num2 << " = " << Sub(num1, num2);
+            file.close();
         }
     }
 
@@ -46,6 +58,12 @@ int main() {
 
             cout <<  "Correct" << endl;
         }
+        else {
+            fstream file;
+            file << "Answer is: " << num1 << " * " << num2 << " = " << Mul(num1, num2);
+            file.close();
+        }
+
     }
 
 
@@ -56,6 +74,12 @@ int main() {
         if (answer == Div(num1, num2)) {
 
             cout <<  "Correct" << endl;
+        }
+
+        else {
+            fstream file;
+            file << "Answer is: " << num1 << " / " << num2 << " = " << Div(num1, num2);
+            file.close();
         }
     }
 
